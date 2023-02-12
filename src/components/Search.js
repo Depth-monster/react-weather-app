@@ -14,15 +14,15 @@ const Search = ({ onSearchChange }) => {
           options: response.data.map((city) => {
             return {
               value: `${city.latitude} ${city.longitude}`,
-              label: `${city.name} ${city.country}`,
+              label: `${city.name}, ${city.country}`,
             };
           }),
         };
       })
-      .catch((err) => console.log(err));
+      .catch((error) => console.error(error));
   };
 
-  const handleChange = (searchData) => {
+  const handleChange = (searchData) => {//searchData - fetched api data
     setSearch(searchData);
     onSearchChange(searchData);
   };
