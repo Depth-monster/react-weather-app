@@ -17,11 +17,11 @@ function App() {
   };
 
 
-  
+
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
-      <CurrentWeather />
+      <CurrentWeather  />
     </div>
   );
 }
