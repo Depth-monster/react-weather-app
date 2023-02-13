@@ -1,7 +1,7 @@
 import React from "react";
 import "./current-weather.css";
 
-const CurrentWeather = ({current, forecast}) => {
+const CurrentWeather = ({current}) => {
 //console.log(current,forecast);
 //console.log(forecast)
 // console.log('daily city name :',current.name)
@@ -26,7 +26,7 @@ const CurrentWeather = ({current, forecast}) => {
           </div>
           <div className="parameter-row">
             <span className="parameter-label">Feels like </span>
-            <span className="parameter-value">{current.main.feels_like}°C</span>
+            <span className="parameter-value">{Math.round(current.main.feels_like)}°C</span>
           </div>
           <div className="parameter-row">
             <span className="parameter-label">Wind </span>
