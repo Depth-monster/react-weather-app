@@ -7,13 +7,14 @@ import {
   GET_OPENWEATHER_DAILY,
   GET_OPENWEATHER_FORECAST,
 } from "./components/api";
+import Forecast from "./components/forecast/Forecast";
 
 function App() {
   const [currentData, setCurrentData] = useState(null);
   const [forecastData, setForecastData] = useState(null);
 
   const handleOnSearchChange = (searchData) => {
-    const [lat,long] = searchData.value.split(" "); //split lat='yyy' long='xxxx' from data[1].data[2]
+    const [lat, long] = searchData.value.split(" "); //split lat='yyy' long='xxxx' from data[1].data[2]
 
     const fetchedDailyData = fetch(
       `${GET_OPENWEATHER_DAILY}lat=${lat}&lon=${long}&units=metric&appid=${OPEN_WEATHER_KEY}`
@@ -23,7 +24,7 @@ function App() {
     );
 
     Promise.all([fetchedDailyData, fetchedForecastData]).then(
-      async response => {
+      async (response) => {
         const weatherDaily = await response[0].json();
         const weatherForecast = await response[1].json();
         setCurrentData(weatherDaily); //setting API daily
@@ -37,9 +38,8 @@ function App() {
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
-      {currentData && (
-        <CurrentWeather current={currentData} />
-      )}
+      {currentData && <CurrentWeather current={currentData} />}
+      {forecastData && <Forecast forecast={forecastData} />}
     </div>
   );
 }
