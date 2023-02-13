@@ -2,28 +2,46 @@ import { useState } from "react";
 import "./App.css";
 import CurrentWeather from "./components/current-weather/current-weather";
 import Search from "./components/Search";
+import {
+  OPEN_WEATHER_KEY,
+  GET_OPENWEATHER_DAILY,
+  GET_OPENWEATHER_FORECAST,
+} from "./components/api";
 
 function App() {
-  // const a = -990011;
-  // const b = (a) => parseFloat(a.toString().split("").reverse().join(""))*Math.sign(a);
-
-  const [data,setData]=useState(null);
+  const [currentData, setCurrentData] = useState(null);
+  const [forecastData, setForecastData] = useState(null);
 
   const handleOnSearchChange = (searchData) => {
-    console.log(searchData);
-    setData(searchData.value.split(' '));
-    const [lat, long] = searchData.value;
-    console.log(data)
+    const [lat,long] = searchData.value.split(" "); //split lat='yyy' long='xxxx' from data[1].data[2]
+
+    const fetchedDailyData = fetch(
+      `${GET_OPENWEATHER_DAILY}lat=${lat}&lon=${long}&units=metric&appid=${OPEN_WEATHER_KEY}`
+    );
+    const fetchedForecastData = fetch(
+      `${GET_OPENWEATHER_FORECAST}lat=${lat}&lon=${long}&units=metric&appid=${OPEN_WEATHER_KEY}`
+    );
+
+    Promise.all([fetchedDailyData, fetchedForecastData]).then(
+      async (response) => {
+        const weatherDaily = await response[0].json();
+        const weatherForecast = await response[1].json();
+        setCurrentData(weatherDaily); //setting API daily
+        setForecastData(weatherForecast); //setting API forecast
+      }
+    );
+    console.log('long :',long)
+    console.log('lat :',lat)
   };
-
-
 
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
-      <CurrentWeather  />
+      {currentData && (
+        <CurrentWeather current={currentData} forecast={forecastData} />
+      )}
     </div>
   );
 }
-//dddd
+
 export default App;

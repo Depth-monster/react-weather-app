@@ -1,18 +1,24 @@
 import React from "react";
 import "./current-weather.css";
 
-const CurrentWeather = () => {
+const CurrentWeather = ({current, forecast}) => {
+console.log(current,forecast);
+//console.log(forecast)
+console.log('daily city name :',current.name)
+console.log('forecast city name :',forecast.city.name)
+
+
   return (
     <div className="weather">
       <div className="top">
         <div>
-          <p className="city">Ashgabat</p>
+          <p className="city">{current.name}</p>
           <p className="weather-description">Sunny</p>
         </div>
         <img alt="weather" className="weather-icon" src="./logo192.png" />
       </div>
       <div className="bottom">
-        <p className="temperature">18°C</p>
+        <p className="temperature">{}</p>
         <div className="details">
           <div className="parameter-row">
             <span className="parameter-label underline">Details</span>
