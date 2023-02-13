@@ -23,15 +23,15 @@ function App() {
     );
 
     Promise.all([fetchedDailyData, fetchedForecastData]).then(
-      async (response) => {
+      async response => {
         const weatherDaily = await response[0].json();
         const weatherForecast = await response[1].json();
         setCurrentData(weatherDaily); //setting API daily
         setForecastData(weatherForecast); //setting API forecast
       }
     );
-    console.log('long :',long)
-    console.log('lat :',lat)
+    // console.log('long :',long)// here i've checked lat and long and fixed a problem
+    // console.log('lat :',lat)
   };
 
   return (
