@@ -2,10 +2,11 @@ import React from "react";
 import "./current-weather.css";
 
 const CurrentWeather = ({current, forecast}) => {
-console.log(current,forecast);
+//console.log(current,forecast);
 //console.log(forecast)
-console.log('daily city name :',current.name)
-console.log('forecast city name :',forecast.city.name)
+// console.log('daily city name :',current.name)
+// console.log('forecast city name :',forecast.city.name)
+// console.log('forecast city name :',current.weather[0].icon)
 
 
   return (
@@ -15,7 +16,7 @@ console.log('forecast city name :',forecast.city.name)
           <p className="city">{current.name }, <br />{current.sys.country}</p>
           <p className="weather-description">{current.weather[0].description}</p>
         </div>
-        <img alt="weather" className="weather-icon" src="./logo192.png" />
+        <img alt="weather" className="weather-icon" src={`icons/${current.weather[0].icon}.png`} />
       </div>
       <div className="bottom">
         <p className="temperature">{Math.round(current.main.temp)}°C</p>
