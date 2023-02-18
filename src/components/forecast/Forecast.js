@@ -10,37 +10,6 @@ const Forecast = ({ forecast }) => {
   const a = parseFloat(hours);
   console.log(a);
   console.log(typeof a);
-//   switch (a) {
-//     case (0<=a<3):
-//     console.log('case 1')
-//       const b = 2;
-//       break;
-//     case (3<=a<6):
-//       const b = 2;
-//       break;
-//     case (6<=a<9):
-//       const b = 6;
-//       break;
-//     case (9<=a<12):
-//       const b = 12;
-//       break;
-//     case (12<=a<15):
-//       const b = 2;
-//       break;
-//     case (15<=a<18):
-//       const b = 2;
-//       break;
-//     case (18<=a<21):
-//       const b = 2;
-//       break;
-//      case (21<=a<23):
-//       const b = 2;
-//       break;
-//      case (a==23)
-//      const d;
-//      break
-//
-//   }
 
   return (
     // <div className="forecast-main">

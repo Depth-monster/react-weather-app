@@ -8,6 +8,7 @@ import {
   GET_OPENWEATHER_FORECAST,
 } from "./components/api";
 import Forecast from "./components/forecast/Forecast";
+import WeatherData from "./components/forecast/WeatherData";
 
 function App() {
   const [currentData, setCurrentData] = useState(null);
@@ -40,6 +41,7 @@ function App() {
       <Search onSearchChange={handleOnSearchChange} />
       {currentData && <CurrentWeather current={currentData} />}
       {forecastData && <Forecast forecast={forecastData} />}
+      { forecastData && <WeatherData forecast={forecastData} />}
     </div>
   );
 }
