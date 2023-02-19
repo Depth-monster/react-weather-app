@@ -41,7 +41,7 @@ function App() {
       <Search onSearchChange={handleOnSearchChange} />
       {currentData && <CurrentWeather current={currentData} />}
       {forecastData && <Forecast forecast={forecastData} />}
-      { forecastData && <WeatherData forecast={forecastData} />}
+      {/* {forecastData && <WeatherData forecast={forecastData} />} this component will be defined later */} 
     </div>
   );
 }
