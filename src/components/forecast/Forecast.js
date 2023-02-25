@@ -21,6 +21,8 @@ const Forecast = ({ forecast }) => {
               <ul>
                 <li>{`${item.dt_txt}`}</li>
                 <p>{`${item.main.feels_like}`}</p>
+                <li>{`${item.weather[0].description}`}</li>
+              
               </ul>
             </div>
           </div>
