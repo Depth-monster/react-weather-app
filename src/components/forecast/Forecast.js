@@ -4,18 +4,25 @@ import "./Forecast.css";
 const Forecast = ({ forecast }) => {
   console.log(forecast);
 
-  const randomIndexes = Array.from({ length: 7 }, () => Math.floor(Math.random() * 40));
-  const selectedItems = randomIndexes.map(index => forecast.list[index]);
-console.log('randomIndexes : ',randomIndexes);
+  const randomIndexes = Array.from({ length: 7 }, () =>
+    Math.floor(Math.random() * 40)
+  );
+  const selectedItems = randomIndexes.map((index) => forecast.list[index]);
+  console.log("randomIndexes : ", randomIndexes);
 
-console.log('selectedItems : ',selectedItems);
+  console.log("selectedItems : ", selectedItems);
 
-return (
+  return (
     <div className="forecast-main">
       <div className="forecast-list">
         {selectedItems.map((item, index) => (
           <div key={index} className="forecast-item">
-            <p>{`${item.dt_txt}`}</p>
+            <div>
+              <ul>
+                <li>{`${item.dt_txt}`}</li>
+                <p>{`${item.main.feels_like}`}</p>
+              </ul>
+            </div>
           </div>
         ))}
       </div>
@@ -23,7 +30,6 @@ return (
   );
 };
 export default Forecast;
-
 
 // <div className="forecast-main">
 // <div className="forecast-list">
